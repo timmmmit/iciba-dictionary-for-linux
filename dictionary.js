@@ -47,8 +47,7 @@ function dictionary() {
   const cheerio = require('cheerio');
 
   const options = {
-    //uri: 'http://www.iciba.com/dictionary',
-    uri: 'http://open.iciba.com/dsapi/?date=2013-05-03',
+    uri: 'http://www.iciba.com/dictionary',
     transform: function (body) {
       return cheerio.load(body);
     }
@@ -68,9 +67,9 @@ function dictionary() {
 function getARandomSentence() {
   //根据爱词霸的api，每日一句会根据所给的日期生成，这里随机生成一个在2012-1-1到2017-12-28的日期
   var year = 2011 + Math.ceil(Math.random()*6);
-  var month = Math.ceil(Math.random(12));
+  var month = Math.ceil(Math.random()*12);
   //偷个懒，不考虑月份日期只取1-28号
-  var day = Math.ceil(Math.random(28));
+  var day = Math.ceil(Math.random()*28);
   var uri = "http://open.iciba.com/dsapi/?date=" + year + "-" + month + "-" + day;
 
   const rp = require('request-promise');
@@ -86,7 +85,9 @@ function getARandomSentence() {
   //发送请求，处理结果
   rp(options)
     .then(function ( $ ) {
-        console.log($.text());
+      eval("var obj = " + $.text());
+      var english = obj.content;
+      console.log(obj.content + "\n" + obj.note);
     })
     .catch(function (err) {
         console.log( err );

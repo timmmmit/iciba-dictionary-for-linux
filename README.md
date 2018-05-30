@@ -9,3 +9,6 @@ word -e(with examples) -n (no add to words book)
 -s(sentence)
 
 
+
+依赖:
+sudo apt-get install -f -y nodejs npm build-essential
