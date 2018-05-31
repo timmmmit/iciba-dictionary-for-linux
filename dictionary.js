@@ -53,7 +53,7 @@ function dictionary( wordOrSentence, withExamples, addToWordsBook, englishToChin
   const cheerio = require('cheerio');
 
   const options = {
-    uri: 'http://www.iciba.com/' + wordOrSentence,
+    uri: encodeURI('http://www.iciba.com/' + wordOrSentence),
     transform: function (body) {
       return cheerio.load(body);
     }
@@ -62,34 +62,29 @@ function dictionary( wordOrSentence, withExamples, addToWordsBook, englishToChin
   //Send the request and handle the response
   rp(options)
     .then(function ( $ ) {
+      //英译中
       if ( englishToChinese ) {
         //最多展示3条例句
         var maxExampleLength = 3;
         var soundMark = $("div.base-speak").text().trim().replace(/\s{2,}/, '     ').replace(/\n{1,}/, '');
         var translation = $("ul.base-list.switch_part").text().replace(/\.(\n)+/g, '\.').replace(/\s{2,}/g, ' ').trim().replace(/\s(\w{1,5})\./g, '\n$1\.')
         var examples = "";
-
-        $("div.p-container").each(function(index, element) {
-          //第一条是空字符串
-          //if ( index == 0 ) return;
-          //var example = $(this).text();
-          //console.log($(this).text());
-          //examples = examples + ( index == 1 ? '' : '\n')  + example;
-
-          //if ( index == maxExampleLength ) return;
-        });
-        console.log( translation );
-        console.log( $("div.p-container").text() );
-        return;
   
         if ( withExamples ) {
-          $("div.p-container").each( function ( index, element ) {
-            examples[index] = $(this).text();
-          } );
+          $("div.sentence-item").each(function(index, element) {
+            examples = examples + (index + 1) + "." + $(this).text();
+            if ( index == maxExampleLength - 1 ) return false;
+          });
+
+          examples = examples.replace(/\.{3}/g, '\.').replace(/\n{1,}/, '').replace(/\s{2,}/g, ' ').replace(/(\d)\./g, '\n$1\.');
         }
   
-        //console.log(keyword);
-        //console.log(wordOrSentence + "\n" + soundMark + "\n" + translations + "\n" + examples);
+        console.log(wordOrSentence + "\n" + soundMark + "\n" + translation + "\n" + examples);
+
+      //中译英
+      } else {
+        var translation = $("ul.base-list.switch_part").text().replace(/\s*释义\s*/, '').replace(/\n{1,}/, '').replace(/\s{2,}/g, ' ');
+        console.log( translation );
       }
     })
     .catch(function (err) {
