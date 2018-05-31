@@ -6,27 +6,33 @@ function route( args ) {
   //没有参数的情况下默认不显示例句，将单词加入单词本
   var withExamples = false;
   var addToWordsBook = true;
+  var englishToChinese = true;
 
   //如果不加参数，或者第一个参数为-s：随机每日一句
-  if ( args.length == 0 || args[1] == "-s" ) {
+  if ( args.length == 0 || args[0] == "-s" ) {
     getARandomSentence();
     return;
   }
 
   //如果第一个参数是-t： 单词测试
-  if ( args[1] == '-t' ) {
+  if ( args[0] == '-t' ) {
 
     return;
   }
 
   //查单词
   var wordOrSentence = "";
-  for ( var arg in args ) {
+  var engReg = /^(\w|\s)*$/;
+  var chReg = /[^\u0000-\u00FF]*/;
+  for ( var index = 0; index < args.length; index ++ ) { 
     //匹配一个单词或者句子
-    var reg = /^(\w|\s)*$/;
-    if ( reg.test(arg) ) {
+    if ( engReg.test( args[index] )) {
       //取第一个单词或者句子
-      wordOrSentence = arg;
+      wordOrSentence = args[index];
+      break;
+    } else if (chReg.test( args[index] )) {
+      wordOrSentence = args[index];
+      englishToChinese = false;
       break;
     }
   }
@@ -39,15 +45,15 @@ function route( args ) {
   if ( args.indexOf('-e') != -1 ) withExamples = !withExamples;
   if ( args.indexOf('-n') != -1 ) addToWordsBook = !addToWordsBook;
 
-  dictionary( word, withExamples, addToWordsBook );
+  dictionary( wordOrSentence, withExamples, addToWordsBook, englishToChinese );
 }
 
-function dictionary() {
+function dictionary( wordOrSentence, withExamples, addToWordsBook, englishToChinese ) {
   const rp = require('request-promise');
   const cheerio = require('cheerio');
 
   const options = {
-    uri: 'http://www.iciba.com/dictionary',
+    uri: 'http://www.iciba.com/' + wordOrSentence,
     transform: function (body) {
       return cheerio.load(body);
     }
@@ -56,8 +62,35 @@ function dictionary() {
   //Send the request and handle the response
   rp(options)
     .then(function ( $ ) {
-        //console.log($("h1[class=keyword]").text());
-        console.log($.text());
+      if ( englishToChinese ) {
+        //最多展示3条例句
+        var maxExampleLength = 3;
+        var soundMark = $("div.base-speak").text().trim().replace(/\s{2,}/, '     ').replace(/\n{1,}/, '');
+        var translation = $("ul.base-list.switch_part").text().replace(/\.(\n)+/g, '\.').replace(/\s{2,}/g, ' ').trim().replace(/\s(\w{1,5})\./g, '\n$1\.')
+        var examples = "";
+
+        $("div.p-container").each(function(index, element) {
+          //第一条是空字符串
+          //if ( index == 0 ) return;
+          //var example = $(this).text();
+          //console.log($(this).text());
+          //examples = examples + ( index == 1 ? '' : '\n')  + example;
+
+          //if ( index == maxExampleLength ) return;
+        });
+        console.log( translation );
+        console.log( $("div.p-container").text() );
+        return;
+  
+        if ( withExamples ) {
+          $("div.p-container").each( function ( index, element ) {
+            examples[index] = $(this).text();
+          } );
+        }
+  
+        //console.log(keyword);
+        //console.log(wordOrSentence + "\n" + soundMark + "\n" + translations + "\n" + examples);
+      }
     })
     .catch(function (err) {
         console.log( 'error ->' + err);
