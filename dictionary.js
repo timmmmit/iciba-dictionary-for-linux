@@ -24,22 +24,40 @@ function route( args ) {
   //查单词
   var wordOrSentence = "";
   var engReg = /^(\w|\s)*$/;
-  var chReg = /[^\u0000-\u00FF]*/;
-  for ( var index = 0; index < args.length; index ++ ) { 
-    //匹配一个单词或者句子
-    if ( engReg.test( args[index] )) {
-      //取第一个单词或者句子
-      wordOrSentence = args[index];
-      break;
-    } else if (chReg.test( args[index] )) {
-      wordOrSentence = args[index];
+  var chReg = /^[\u4e00-\u9fa5]{1,}$/;
+
+  //找到要查的那个单词或者句子
+  var begin = false;
+  var params = ['-e', '-t', '-n', '-s'];
+  for ( var index = 0; index < args.length; index ++ ) {
+
+    if ( !begin && params.indexOf( args[index]) == -1 ) {
+      begin = true;
+      wordOrSentence += args[index] + " ";
+      if ( chReg.test( args[index] ) )  {
+        englishToChinese = false;
+      }
+      if ( args.length == index + 1 || params.indexOf(args[index + 1]) != -1 ) {
+        break;
+      }
+      continue;
+    } else if ( !begin && params.indexOf( args[index]) != -1 ) {
+      continue;
+    }
+
+    if ( chReg.test( args[index] ) ) {
       englishToChinese = false;
+    }
+    wordOrSentence += args[index] + " ";
+
+    if ( args.length == index + 1 || params.indexOf(args[index + 1]) != -1 ) {
       break;
     }
   }
 
-  if ( wordOrSentence.trim() == "" ){
-    console.log("bad request");
+  wordOrSentence = wordOrSentence.trim();
+  if ( wordOrSentence == "" ){
+    console.log("show how to use it");
     return;
   }
 
@@ -128,6 +146,7 @@ function icibaDictionary( wordOrSentence, withExamples, addToWordsBook, englishT
   //Send the request and handle the response
   rp(options)
     .then(function ( $ ) {
+      $("li.current").first().click();
       //英译中
       if ( englishToChinese ) {
         //最多展示3条例句
