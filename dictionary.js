@@ -1,4 +1,5 @@
 var args = process.argv.splice(2);
+var wordsBookPath = '';
 route( args )
 
 
@@ -45,10 +46,14 @@ function route( args ) {
   if ( args.indexOf('-e') != -1 ) withExamples = !withExamples;
   if ( args.indexOf('-n') != -1 ) addToWordsBook = !addToWordsBook;
 
-  dictionary( wordOrSentence, withExamples, addToWordsBook, englishToChinese );
+  if ( englishToChinese && wordOrSentence.indexOf(" ") == -1 || !englishToChinese && wordOrSentence.length <= 2 ) {
+    icibaDictionary( wordOrSentence, withExamples, addToWordsBook, englishToChinese );
+  } else {
+    baiduDictionary( wordOrSentence, withExamples, addToWordsBook, englishToChinese );
+  }
 }
 
-function dictionary( wordOrSentence, withExamples, addToWordsBook, englishToChinese ) {
+function baiduDictionary( wordOrSentence, withExamples, addToWordsBook, englishToChinese ) {
   const rp = require('request-promise');
   const cheerio = require('cheerio');
   var MD5 = require('./md5.js');
@@ -106,5 +111,49 @@ function getARandomSentence() {
     })
     .catch(function (err) {
         console.log( err );
+    });
+}
+
+function icibaDictionary( wordOrSentence, withExamples, addToWordsBook, englishToChinese ) {
+  const rp = require('request-promise');
+  const cheerio = require('cheerio');
+
+  const options = {
+    uri: encodeURI('http://www.iciba.com/' + wordOrSentence),
+    transform: function (body) {
+      return cheerio.load(body);
+    }
+  };
+
+  //Send the request and handle the response
+  rp(options)
+    .then(function ( $ ) {
+      //英译中
+      if ( englishToChinese ) {
+        //最多展示3条例句
+        var maxExampleLength = 3;
+        var soundMark = $("div.base-speak").text().trim().replace(/\s{2,}/, '     ').replace(/\n{1,}/, '');
+        var translation = $("ul.base-list.switch_part").text().replace(/\.(\n)+/g, '\.').replace(/\s{2,}/g, ' ').trim().replace(/\s(\w{1,5})\./g, '\n$1\.')
+        var examples = "";
+  
+        if ( withExamples ) {
+          $("div.sentence-item").each(function(index, element) {
+            examples = examples + (index + 1) + "." + $(this).text();
+            if ( index == maxExampleLength - 1 ) return false;
+          });
+
+          examples = examples.replace(/\.{3}/g, '\.').replace(/\n{1,}/, '').replace(/\s{2,}/g, ' ').replace(/(\d)\./g, '\n$1\.');
+        }
+  
+        console.log(wordOrSentence + "\n" + soundMark + "\n" + translation + "\n" + examples);
+
+      //中译英
+      } else {
+        var translation = $("ul.base-list.switch_part").text().replace(/\s*释义\s*/, '').replace(/\n{1,}/, '').replace(/\s{2,}/g, ' ');
+        console.log( translation );
+      }
+    })
+    .catch(function (err) {
+        console.log( 'error ->' + err);
     });
 }
