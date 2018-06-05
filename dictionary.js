@@ -146,7 +146,6 @@ function icibaDictionary( wordOrSentence, withExamples, addToWordsBook, englishT
   //Send the request and handle the response
   rp(options)
     .then(function ( $ ) {
-      $("li.current").first().click();
       //英译中
       if ( englishToChinese ) {
         //最多展示3条例句
