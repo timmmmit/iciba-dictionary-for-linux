@@ -1,5 +1,5 @@
 /**
-        Colors
+      Colors
   Reset = "\x1b[0m"
   Bright = "\x1b[1m"
   Dim = "\x1b[2m"
@@ -48,7 +48,18 @@ function index( args ) {
 
   //如果第一个参数是-t： 单词测试
   if ( args[0] == '-t' ) {
-
+    //拿到第一个int类型参数，作为测试单词数
+    var testWordsNumber = 10;
+    if ( args.length != 1 ) {
+      for ( var index = 1; index < args.length; index ++ ) {
+        var number = parseInt(args[index]);
+        if ( number > 0 && number % 1 === 0 ) {
+          testWordsNumber = args[index];
+          break;
+        }
+      }
+    }
+    wordsTest( testWordsNumber );
     return;
   }
 
@@ -80,7 +91,7 @@ function index( args ) {
   }
 
   wordOrSentence = wordOrSentence.trim();
-  if ( chReg.test( args[index] ) )  englishToChinese = false;
+  if ( chReg.test( args[index] ) || args[index] % 1 === 0 )  englishToChinese = false;
   if ( wordOrSentence == "" ){
     console.log("show how to use it");
     return;
@@ -190,12 +201,13 @@ function icibaDictionary( wordOrSentence, withExamples, addToNoteBook, englishTo
       } else {
         translation = $("ul.base-list.switch_part").text().replace(/\s*释义\s*/, '').replace(/\n{1,}/, '').replace(/\s{2,}/g, ' ');
       }
-      console.log( wordOrSentence + "\n" + soundMark + "\n" + translation + "\n");
       if ( translation != "" ) {
-        console.log( keyWordColor, wordOrSentence + "\n", soundMarksColor, soundMark + "\n", translationColor, translation + "\n");
+        console.log( keyWordColor, "\n" + wordOrSentence + ":");
+        if ( englishToChinese ) console.log( soundMarksColor, "\n" + soundMark);
+        console.log(translationColor, "\n" + translation + "\n");
       } else {
         addToNoteBook = false;
-        console.log('No such word');
+        console.log(errorColor, 'No such word');
       }
 
       if ( addToNoteBook ) {
@@ -203,7 +215,7 @@ function icibaDictionary( wordOrSentence, withExamples, addToNoteBook, englishTo
       }
     })
     .catch(function (err) {
-        console.log( 'error ->' + err);
+        console.log( errorColor, err);
     });
 }
 
@@ -213,7 +225,7 @@ function writeToNoteBook( originalText, translatedText ) {
   fs.exists( noteBookPath, function ( exists ) {
     if ( !exists ) {
       fs.writeFile(noteBookPath, '', function( err ) {
-        if ( err ) console.log( err );
+        if ( err ) console.log( errorColor, err );
       });
     }
   });
@@ -230,4 +242,8 @@ function writeToNoteBook( originalText, translatedText ) {
       if (err) console.log(err);
     });
   }
+}
+
+function wordsTest( times ) {
+  console.log( times );
 }
