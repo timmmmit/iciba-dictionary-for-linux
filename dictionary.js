@@ -125,7 +125,6 @@ function baiduDictionary( wordOrSentence, withExamples, addToNoteBook, englishTo
   };
 
   //Send the request and handle the response
-  var ret = { a: "a"};
   ret = rp(options)
     .then(function ( $ ) {
       eval("var obj = " + $.text());
@@ -134,10 +133,10 @@ function baiduDictionary( wordOrSentence, withExamples, addToNoteBook, englishTo
         writeToNoteBook( wordOrSentence, obj.trans_result[0].dst );
       }
 
-      console.log( translationColor ,obj.trans_result[0].dst.trim() );
+      console.log( "\n" + keyWordColor + wordOrSentence + "\n" + translationColor + obj.trans_result[0].dst.trim() + "\n" );
     })
     .catch(function (err) {
-        console.log( errorColor, 'error ->' + err);
+        console.log( errorColor + 'error ->' + err);
     });
 }
 
@@ -161,10 +160,10 @@ function getARandomSentence() {
     .then(function ( $ ) {
       eval("var obj = " + $.text());
       var english = obj.content;
-      console.log( enSentenceColor, obj.content + "\n", chSentenceColor, obj.note);
+      console.log( "\n" + enSentenceColor + obj.content + "\n" + chSentenceColor + obj.note + "\n");
     })
     .catch(function (err) {
-        console.log( errorColor, err );
+        console.log( errorColor + err );
     });
 }
 
@@ -183,11 +182,14 @@ function icibaDictionary( wordOrSentence, withExamples, addToNoteBook, englishTo
       var translation = '';
       var soundMark = '';
       var examples = "";
+      var changes = "";
 
       if ( englishToChinese ) {
         soundMark = $("div.base-speak").text().replace(/\s{2,}/g, ' ').replace(/\n{1,}/g, '').trim();
         translation = $("ul.base-list.switch_part").text().replace(/\.(\n)+/g, '\.').replace(/\s{2,}/g, ' ').trim().replace(/\s(\w{1,5})\./g, '\n$1\.')
-  
+        changes = $("li.change").text();
+        changes = changes.indexOf("变形") == -1 ? "" : changes.replace(/变形|(\n)+/g, '').replace(/(\s)+/g , '').replace(/(\w)([\u4e00-\u9fa5])/g, '$1   $2');
+
         if ( withExamples ) {
           $("div.sentence-item").each(function(index, element) {
             examples = examples + (index + 1) + "." + $(this).text();
@@ -202,12 +204,15 @@ function icibaDictionary( wordOrSentence, withExamples, addToNoteBook, englishTo
         translation = $("ul.base-list.switch_part").text().replace(/\s*释义\s*/, '').replace(/\n{1,}/, '').replace(/\s{2,}/g, ' ');
       }
       if ( translation != "" ) {
-        console.log( keyWordColor, "\n" + wordOrSentence + ":");
-        if ( englishToChinese ) console.log( soundMarksColor, "\n" + soundMark);
-        console.log(translationColor, "\n" + translation + "\n");
+        console.log();
+        console.log( keyWordColor + wordOrSentence + ":");
+        if ( englishToChinese ) console.log( soundMarksColor + soundMark);
+        console.log( translationColor + translation );
+        if ( changes != "" ) console.log( keyWordColor + changes );
+        console.log();
       } else {
         addToNoteBook = false;
-        console.log(errorColor, 'No such word');
+        console.log(errorColor + 'No such word');
       }
 
       if ( addToNoteBook ) {
@@ -215,7 +220,7 @@ function icibaDictionary( wordOrSentence, withExamples, addToNoteBook, englishTo
       }
     })
     .catch(function (err) {
-        console.log( errorColor, err);
+        console.log( errorColor + err);
     });
 }
 
@@ -225,7 +230,7 @@ function writeToNoteBook( originalText, translatedText ) {
   fs.exists( noteBookPath, function ( exists ) {
     if ( !exists ) {
       fs.writeFile(noteBookPath, '', function( err ) {
-        if ( err ) console.log( errorColor, err );
+        if ( err ) console.log( errorColor + err );
       });
     }
   });
@@ -237,13 +242,55 @@ function writeToNoteBook( originalText, translatedText ) {
     isOriginalTextExist = false;
   }
 
+  var text = "{ word: " + originalText + ", translation: " + translatedText.replace(/\n/g, '') + ", testRightTime: 0, testWrongTime: 0 }\n";
+
   if ( !isOriginalTextExist ) {
-    fs.appendFile(noteBookPath, originalText + "-->" + translatedText.replace(/\n/g, '') + "\n", function (err) { 
+    fs.appendFile(noteBookPath, text, function (err) { 
       if (err) console.log(err);
     });
   }
 }
 
 function wordsTest( times ) {
-  console.log( times );
+  var stdin = process.openStdin();
+
+  stdin.addListener("data", function(d) {
+      // note:  d is an object, and when converted to a string it will
+      // end with a linefeed.  so we (rather crudely) account for that  
+      // with toString() and then trim() 
+      console.log("you entered: [" + 
+          d.toString().trim() + "]");
+    });
+}
+
+function get_line(filename, line_no, callback) {
+  var stream = fs.createReadStream(filename, {
+    flags: 'r',
+    encoding: 'utf-8',
+    fd: null,
+    mode: 0666,
+    bufferSize: 64 * 1024
+  });
+
+  var fileData = '';
+  stream.on('data', function(data){
+    fileData += data;
+
+    // The next lines should be improved
+    var lines = fileData.split("\n");
+
+    if(lines.length >= +line_no){
+      stream.destroy();
+      callback(null, lines[+line_no]);
+    }
+  });
+
+  stream.on('error', function(){
+    callback('Error', null);
+  });
+
+  stream.on('end', function(){
+    callback('File end reached without finding line', null);
+  });
+
 }
