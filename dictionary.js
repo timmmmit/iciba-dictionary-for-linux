@@ -21,6 +21,8 @@
 var args = process.argv.splice(2);
 var noteBookPath = 'notebook';
 var maxExampleLength = 3;
+var testWordsNumber = 10;
+var testIndex = 0;
 
 const rp = require('request-promise');
 const cheerio = require('cheerio');
@@ -49,7 +51,6 @@ function index( args ) {
   //如果第一个参数是-t： 单词测试
   if ( args[0] == '-t' ) {
     //拿到第一个int类型参数，作为测试单词数
-    var testWordsNumber = 10;
     if ( args.length != 1 ) {
       for ( var index = 1; index < args.length; index ++ ) {
         var number = parseInt(args[index]);
@@ -59,7 +60,7 @@ function index( args ) {
         }
       }
     }
-    wordsTest( testWordsNumber );
+    wordsTest();
     return;
   }
 
@@ -238,11 +239,11 @@ function writeToNoteBook( originalText, translatedText ) {
   //如果此单词已经在生词本中则不再添加
   var isOriginalTextExist = true;
   var data = fs.readFileSync(noteBookPath, 'utf8');
-  if ( data.indexOf( originalText + "-->") == -1) {
+  if ( data.indexOf( "'" + originalText + "'" ) == -1) {
     isOriginalTextExist = false;
   }
 
-  var text = "{ word: " + originalText + ", translation: " + translatedText.replace(/\n/g, '') + ", testRightTime: 0, testWrongTime: 0 }\n";
+  var text = "{ word: '" + originalText + "', translation: '" + translatedText.replace(/\n/g, '') + "', testRightTime: 0 }\n";
 
   if ( !isOriginalTextExist ) {
     fs.appendFile(noteBookPath, text, function (err) { 
@@ -251,46 +252,45 @@ function writeToNoteBook( originalText, translatedText ) {
   }
 }
 
-function wordsTest( times ) {
-  var stdin = process.openStdin();
+function wordsTest( ) {
+  var fs = require('fs');
+  var data = fs.readFileSync( noteBookPath, 'utf8');
+  var lines = data.split('\n');
 
-  stdin.addListener("data", function(d) {
-      // note:  d is an object, and when converted to a string it will
-      // end with a linefeed.  so we (rather crudely) account for that  
-      // with toString() and then trim() 
-      console.log("you entered: [" + 
-          d.toString().trim() + "]");
-    });
-}
+  const readline = require('readline');
 
-function get_line(filename, line_no, callback) {
-  var stream = fs.createReadStream(filename, {
-    flags: 'r',
-    encoding: 'utf-8',
-    fd: null,
-    mode: 0666,
-    bufferSize: 64 * 1024
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
   });
 
-  var fileData = '';
-  stream.on('data', function(data){
-    fileData += data;
+  var index = 1;
+  var word = {};
 
-    // The next lines should be improved
-    var lines = fileData.split("\n");
+  while ( index < times ) {
+    eval("word = " + lines[ Math.floor(Math.random()*(lines.length - 1)) ] );
+    rl.question( word.word + "  ====>   ", function(answer) {
+      rl.close();
+    })
+    index ++;
+  }
 
-    if(lines.length >= +line_no){
-      stream.destroy();
-      callback(null, lines[+line_no]);
-    }
-  });
+  function askAndResponse( ) {
 
-  stream.on('error', function(){
-    callback('Error', null);
-  });
+  }
 
-  stream.on('end', function(){
-    callback('File end reached without finding line', null);
-  });
+  // rl.on( 'line', (line) => {
+  //   //答对
+  //   if ( word.translation.indexOf(line.trim()) != -1 ) {
 
+  //   }
+
+  //   if ( index ++ == times ) {
+  //     rl.close();
+  //   } else {
+  //     var randomLine = Math.floor(Math.random()*(lines.length - 1));
+  //     eval("var word = " + lines[ randomLine ] );
+  //     process.stdout.write( word.word + "  ====>  ");
+  //   }
+  // });
 }
