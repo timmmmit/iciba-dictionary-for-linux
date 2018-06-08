@@ -257,15 +257,7 @@ function wordsTest( ) {
   var data = fs.readFileSync( noteBookPath, 'utf8');
   var lines = data.split('\n');
 
-  const readline = require('readline');
-
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
-
-  var index = 1;
-  var word = {};
+  
 
   while ( index < times ) {
     eval("word = " + lines[ Math.floor(Math.random()*(lines.length - 1)) ] );
@@ -276,7 +268,12 @@ function wordsTest( ) {
   }
 
   function askAndResponse( ) {
+    const readline = require('readline');
 
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
   }
 
   // rl.on( 'line', (line) => {
