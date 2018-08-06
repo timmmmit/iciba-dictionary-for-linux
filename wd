@@ -1,0 +1,5 @@
+#!/bin/bash
+save_path=$PWD
+cd /home/yt00687/workspace/server/iciba-dictionary-for-linux
+bash ./wdd $*
+cd $save_path
