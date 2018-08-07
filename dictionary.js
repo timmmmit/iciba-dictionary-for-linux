@@ -284,19 +284,17 @@ function wordsTest( ) {
       lines[random] = lines[random].replace(/\'\s\}/, 'Y\' \}');
       random = GetRandomNum(0, words.length - 1);
       word = words[random];
-      console.log('You still remember:  ' + keyWordColor + word.word + FgWhite + ' ? (y/n) ');
+      console.log(FgWhite + 'You still remember:  ' + keyWordColor + word.word + FgWhite + ' ? (y/n) ');
     }
     if (str == 'n' || str == 'N') {
-      console.log( translationColor + word.translation );
+      console.log( errorColor + word.translation );
 
       lines[random] = lines[random].replace(/\'\s\}/, 'N\' \}');
       random = GetRandomNum(0, words.length - 1);
       word = words[random];
-      console.log('You still remember:  ' + keyWordColor + word.word + FgWhite + ' ? (y/n) ');
+      console.log(FgWhite + 'You still remember:  ' + keyWordColor + word.word + FgWhite + ' ? (y/n) ');
     }
     if (str == 'q' || str == 'Q' || key.name == 'escape' || key.sequence == '\u0003') {
-      console.log( translationColor + word.translation );
-
       for (var index = 0; index < lines.length - 1; index ++) {
         if (lines[index].indexOf('YYY') >= 0) {
           data = data.replace(lines2[index] + '\n', '');
