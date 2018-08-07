@@ -21,8 +21,6 @@
 var args = process.argv.splice(2);
 var noteBookPath = 'notebook';
 var maxExampleLength = 3;
-var testWordsNumber = 10;
-var testIndex = 0;
 
 const rp = require('request-promise');
 const cheerio = require('cheerio');
@@ -33,6 +31,8 @@ var soundMarksColor = "\x1b[33m";
 var translationColor = "\x1b[34m";
 var enSentenceColor = "\x1b[36m";
 var chSentenceColor = "\x1b[37m";
+
+var FgWhite = "\x1b[37m"
 
 index( args )
 
@@ -243,7 +243,7 @@ function writeToNoteBook( originalText, translatedText ) {
     isOriginalTextExist = false;
   }
 
-  var text = "{ word: '" + originalText + "', translation: '" + translatedText.replace(/\n/g, '') + "', testRightTime: 0 }\n";
+  var text = "{ word: '" + originalText + "', translation: '" + translatedText.replace(/\n/g, '') + "', testResults:'' }\n";
 
   if ( !isOriginalTextExist ) {
     fs.appendFile(noteBookPath, text, function (err) { 
@@ -256,38 +256,62 @@ function wordsTest( ) {
   var fs = require('fs');
   var data = fs.readFileSync( noteBookPath, 'utf8');
   var lines = data.split('\n');
+  var lines2 = data.split('\n');
+  var words = [];
 
-  
-
-  while ( index < times ) {
-    eval("word = " + lines[ Math.floor(Math.random()*(lines.length - 1)) ] );
-    rl.question( word.word + "  ====>   ", function(answer) {
-      rl.close();
-    })
-    index ++;
+  for (var index = 0; index < lines.length - 1; index ++) {
+    eval("var word = " + lines[index] );
+    words[index] = word;
   }
 
-  function askAndResponse( ) {
-    const readline = require('readline');
-
-    const rl = readline.createInterface({
-      input: process.stdin,
-      output: process.stdout
-    });
+  if (words.length == 0) {
+    console.log('No words in notebook now');
+    return;
   }
+ 
+  const readline = require('readline');
+  readline.emitKeypressEvents(process.stdin);
+  process.stdin.setRawMode(true);
 
-  // rl.on( 'line', (line) => {
-  //   //答对
-  //   if ( word.translation.indexOf(line.trim()) != -1 ) {
+  var random = GetRandomNum(0, words.length - 1);
+  var word = words[random];
+  console.log('You still remember:  ' + keyWordColor + word.word + FgWhite + ' ? (y/n) ');
 
-  //   }
+  process.stdin.on('keypress', (str, key) => {
+    if (str == 'Y' || str == 'y' || key.name == 'return') {
+      console.log( translationColor + word.translation );
 
-  //   if ( index ++ == times ) {
-  //     rl.close();
-  //   } else {
-  //     var randomLine = Math.floor(Math.random()*(lines.length - 1));
-  //     eval("var word = " + lines[ randomLine ] );
-  //     process.stdout.write( word.word + "  ====>  ");
-  //   }
-  // });
+      lines[random] = lines[random].replace(/\'\s\}/, 'Y\' \}');
+      random = GetRandomNum(0, words.length - 1);
+      word = words[random];
+      console.log('You still remember:  ' + keyWordColor + word.word + FgWhite + ' ? (y/n) ');
+    }
+    if (str == 'n' || str == 'N') {
+      console.log( translationColor + word.translation );
+
+      lines[random] = lines[random].replace(/\'\s\}/, 'N\' \}');
+      random = GetRandomNum(0, words.length - 1);
+      word = words[random];
+      console.log('You still remember:  ' + keyWordColor + word.word + FgWhite + ' ? (y/n) ');
+    }
+    if (str == 'q' || str == 'Q' || key.name == 'escape' || key.sequence == '\u0003') {
+      console.log( translationColor + word.translation );
+
+      for (var index = 0; index < lines.length - 1; index ++) {
+        if (lines[index].indexOf('YYY') >= 0) {
+          data = data.replace(lines2[index] + '\n', '');
+        } else {
+          data = data.replace(lines2[index], lines[index]);
+        }
+      }
+      fs.writeFileSync( noteBookPath, data);
+      process.exit();
+    }
+  })
 }
+
+function GetRandomNum(Min,Max) {
+  var Range = Max - Min;   
+  var Rand = Math.random();   
+  return(Min + Math.round(Rand * Range));   
+}   
