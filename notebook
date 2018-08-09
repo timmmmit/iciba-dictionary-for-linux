@@ -1,0 +1,60 @@
+{ word: 'candidate', translation: 'n. 报考者； 申请求职者； 攻读学位者； 最后命运或结局如何已显然可见者', testResults:'' }
+{ word: 'obsoleted', translation: 'v. 已不用的，已废弃的，过时的( obsolete的过去式和过去分词 )；', testResults:'' }
+{ word: 'vaccine', translation: 'n. 疫苗，痘苗；adj. 痘苗的，疫苗的；', testResults:'' }
+{ word: 'scandal', translation: 'n. 丑闻，丑名，丑事，丑行，丢脸的事件，舞弊案件，耻辱； 流言蜚语； 闲话； 诽谤', testResults:'' }
+{ word: 'scan', translation: 'vt. <计>扫描； 细看； 细查； （雷达）对…进行扫描n. 扫描； 浏览； 审视； （雷达）（屏面上的）光点vi. （光束、雷达等）扫描； 扫略； （诗歌）符合韵律； 标出诗歌的格律', testResults:'Y' }
+{ word: 'in violation of', translation: '违背', testResults:'' }
+{ word: 'violation', translation: 'n. 违反，妨碍，侵犯； 违犯，违背； [体]违例，犯规； 强奸，亵渎，污辱', testResults:'' }
+{ word: 'investigation', translation: 'n. （正式的）调查，研究； 侦查； 科学研究； 学术研究', testResults:'' }
+{ word: 'invest', translation: 'vt.&vi. 投资； 花费；vt. 授予，使就职； 给…穿衣，装饰； 使充满； 覆盖', testResults:'Y' }
+{ word: 'mortality', translation: 'n. 死亡数，死亡率； 必死性，必死的命运；', testResults:'YY' }
+{ word: 'mortal', translation: 'adj. 致命的； 不共戴天的； 终有一死的； 极度的n. 凡人，人类；', testResults:'Y' }
+{ word: 'moral', translation: 'adj. 道德的，道义上的； 精神上的； 无疑的，当然的； 教导道德的n. 寓意，教训； （尤指男女间的）品行； 格言； 〈古〉相对者', testResults:'' }
+{ word: 'eternal', translation: 'adj. 永恒的，永久的； 似乎不停的，没完没了的； 不朽的； 永生的n. 永恒的事物； Eternal 上帝，与定冠词the 连用；', testResults:'' }
+{ word: 'pear shaped', translation: '梨形的', testResults:'' }
+{ word: 'pear', translation: 'n. 梨（树）； 梨树；', testResults:'' }
+{ word: 'entrepreneurs', translation: 'n. <法>企业家( entrepreneur的名词复数 )； 主办人；', testResults:'' }
+{ word: 'sting', translation: 'vt. 叮，螫； 刺痛； 精神上刺痛； 刺激vi. 感到剧痛； 刺，叮；n. 螫伤处； （某些昆虫的）毒刺； （身体或心灵的）剧痛； （警察为抓捕罪犯而设的）圈套', testResults:'' }
+{ word: 'tail', translation: 'n. 尾； 尾部； 燕尾服； 尾随者vt. 跟踪； 装上尾巴；vi. 队伍单行行进时拉长或产生间隔； 侦察队两两散开； [建筑学] 嵌上，搭上；', testResults:'' }
+{ word: 'take the sting out of the tail', translation: '把尾巴吐出来', testResults:'' }
+{ word: 'bakery', translation: 'n. 面包房，面包店； 烘烤食品（面包、糕点等的总称）；', testResults:'' }
+{ word: 'drag', translation: 'vt. 拖拽； 吃力地往前拉； 拖地而行；vi. 沿地面拖动； 落后； 缓慢前进； 打捞n. 拖，拉； 累赘； 阻力；', testResults:'' }
+{ word: 'take out the trash', translation: '把垃圾拿出去', testResults:'' }
+{ word: 'alligator', translation: 'n. 短吻鳄； 短吻鳄皮革； 鳄口式工具；', testResults:'' }
+{ word: 'closure', translation: 'n. （永久的）停业，关闭； 结束； [电]闭合； [数]闭包vt. 使结束，使终止； 使停止辩论；', testResults:'' }
+{ word: 'conclusion', translation: 'n. 结论； 结局； 断定，决定； 推论', testResults:'' }
+{ word: 'dive', translation: 'vi. 潜水； 跳水； 急剧下降； （头朝下）跳入水中n. 潜水； 跳水； 俯冲，（潜艇）下潜； （气温，股价等的）暴跌，跳水vt.&vi. 突然下降，暴跌；', testResults:'' }
+{ word: 'disturbing', translation: 'adj. 烦扰的； 令人不安的；v. 打扰(disturb的现在分词)；', testResults:'' }
+{ word: 'luxury', translation: 'n. 奢侈，豪华； 奢侈品，美食，美衣； 乐趣，享受； 不常有的乐趣（或享受、优势）adj. 奢华的，豪华的；', testResults:'' }
+{ word: 'tariff', translation: 'n. 关税表； 关税； 价格表；vt. 征收关税； 定税率； 定收费标准；', testResults:'' }
+{ word: 'impose', translation: 'vt. 强加； 征税； 以…欺骗；vi. 利用； 欺骗； 施加影响；', testResults:'' }
+{ word: 'countermeasure', translation: 'n. 对策，反措施；', testResults:'' }
+{ word: 'ministry', translation: 'n. （政府的）部； 神职； 牧师职位； 神职任期', testResults:'' }
+{ word: 'domestic', translation: 'adj. 家庭的，家的； 国内的； 驯养的； 热心家务的n. 佣人； 国货；', testResults:'' }
+{ word: 'chemical', translation: 'adj. 化学的； 用化学方法制造的，化学作用的；n. 化学药品，化学制品；', testResults:'' }
+{ word: 'council', translation: 'n. 委员会； （郡、镇等）政务会； （尤指旧时讨论特定步骤的）协商会议； 市政（或地方管理）服务机构', testResults:'' }
+{ word: 'estimate', translation: 'n. 估计，预测； 报价，预算书； 评价，判断；vt. 估计，估算； 评价，评论； 估量，估价；', testResults:'' }
+{ word: 'stood', translation: 'v. 坐落( stand的过去式和过去分词 )； 维持原状； 停着； 处于某种状态', testResults:'' }
+{ word: 'nonresident', translation: 'adj. 不住在住所的；n. 不住在住所；', testResults:'' }
+{ word: 'circuit', translation: 'n. 电路，线路； 巡回； 唤醒，环形道； 〔电〕电流vt. 巡回，周游；', testResults:'' }
+{ word: 'vend', translation: 'vt. 出售（尤指土地等财产）； （尤指在公共场所）贩卖； 发表（意见，言论）； 声明', testResults:'' }
+{ word: 'resistor', translation: 'n. 电阻器；', testResults:'' }
+{ word: 'capacitor', translation: 'n. 电容器，电容；', testResults:'' }
+{ word: 'levy', translation: 'n. 征兵； 征税；v. 征收，索取； 征税，征集；', testResults:'' }
+{ word: 'envy', translation: 'n. 嫉妒，妒忌； 羡慕；vi. 感到妒忌； 显示出妒忌；', testResults:'' }
+{ word: 'commuter', translation: 'n. （远距离）上下班往返的人；', testResults:'' }
+{ word: 'meet', translation: 'vt.&vi. 相遇； 相识； 开会； 接触（某物）vt. 满足； 支付； 迎接； 经历（常指不愉快的事）n. 运动会，体育比赛； 猎狐运动（尤其英式英语）；adj. 适当的； 合适的； 恰当的；', testResults:'' }
+{ word: 'buzz', translation: 'vi. 嗡嗡叫； 低声谈； 散布：嗡嗡叫，发哼声； 匆忙来去，奔忙vt. 使嗡嗡叫； 咕哝：用快而低的嗓音讲话； [非正式用语]低飞； 打电话给…n. 嗡嗡声； 电话； 乱哄哄的说话声； 醉酒', testResults:'' }
+{ word: 'pedestrian', translation: 'n. 步行者； 行人；adj. 徒步的； 平淡无奇的； 一般的；', testResults:'' }
+{ word: 'migration', translation: 'n. 迁移，移居；', testResults:'' }
+{ word: 'phobia', translation: 'n. 恐惧； 厌恶；', testResults:'' }
+{ word: 'crave', translation: 'vt.&vi. 渴望，热望； 恳求，恳请； 要求，需要；vt. 恳求，请求； 渴望；', testResults:'' }
+{ word: 'sentiment', translation: 'n. 感情，情绪； 情操； 意见，观点； 感伤', testResults:'' }
+{ word: 'tribulation', translation: 'n. 苦难； 艰难； 苦难的缘由； 痛苦', testResults:'' }
+{ word: 'objective', translation: 'adj. 客观的，实体的； 目标的； [语]宾格的； [医]他觉的n. 目标，任务； [光]物镜； [语]宾语，宾格； [事]出击目标', testResults:'' }
+{ word: 'incentive', translation: 'n. 动机； 刺激； 诱因； 鼓励adj. 刺激性的； 鼓励性质的；', testResults:'' }
+{ word: 'trap', translation: 'vt. 诱骗； 使受限制； 困住； 使（水与气体等）分离n. 圈套； （对付人的）计谋； （练习射击用的）抛靶器； （捕捉动物的）夹子vi. 设陷阱； 装捕捉机； 设圈套；', testResults:'' }
+{ word: 'laten', translation: 'v. （使）变迟；', testResults:'' }
+{ word: 'latern', translation: '释义 润滑环；', testResults:'' }
+{ word: 'lantern', translation: 'n. 灯笼； 灯塔； 灯罩； 灯饰', testResults:'' }
+{ word: 'scratch', translation: 'vt. 擦，刮； 擦痛，擦伤； 在…处搔痒； 抓破vi. 发出刮擦声； 擦红，擦伤； 搔痒； 抓，扒n. 擦，刮； 刮擦声； 搔痕； 乱写乱画adj. 打草稿用的，随便写用的； 碰巧的，侥幸的； 东拼西凑的； 平等比赛的', testResults:'' }
