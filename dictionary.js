@@ -19,20 +19,20 @@
  */
 
 var args = process.argv.splice(2);
-var noteBookPath = 'notebook';
+var noteBookPath = 'C:\\Users\\austin.zhang\\iciba-dictionary-for-linux\\notebook';
 var maxExampleLength = 3;
 
 const rp = require('request-promise');
 const cheerio = require('cheerio');
 
-var errorColor = "\x1b[31m";
-var keyWordColor = "\x1b[32m";
-var soundMarksColor = "\x1b[33m";
-var translationColor = "\x1b[34m";
-var enSentenceColor = "\x1b[36m";
+var errorColor = "\x1b[37m";
+var keyWordColor = "\x1b[37m";
+var soundMarksColor = "\x1b[37m";
+var translationColor = "\x1b[37m";
+var enSentenceColor = "\x1b[37m";
 var chSentenceColor = "\x1b[37m";
 
-var FgWhite = "\x1b[37m"
+var FgWhite = "\x1b[37m";
 
 index( args )
 

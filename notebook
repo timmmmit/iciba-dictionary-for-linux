@@ -58,3 +58,7 @@
 { word: 'latern', translation: '释义 润滑环；', testResults:'' }
 { word: 'lantern', translation: 'n. 灯笼； 灯塔； 灯罩； 灯饰', testResults:'' }
 { word: 'scratch', translation: 'vt. 擦，刮； 擦痛，擦伤； 在…处搔痒； 抓破vi. 发出刮擦声； 擦红，擦伤； 搔痒； 抓，扒n. 擦，刮； 刮擦声； 搔痕； 乱写乱画adj. 打草稿用的，随便写用的； 碰巧的，侥幸的； 东拼西凑的； 平等比赛的', testResults:'' }
+{ word: 'windows', translation: 'n. 窗( window的名词复数 )； （计算机荧屏的）窗口； 窗玻璃； 墙上（或信封等上）开的窗形的口', testResults:'' }
+{ word: 'bat', translation: 'n. 蝙蝠； 短棍，（棒球等的）球棒，（网球等的）球拍； 白话，口语，成语，俗话； （口）打击，猛击，（海上）导弹vt.&vi. 用球板击球，用球棒击球（尤指板球或棒球运动）；', testResults:'' }
+{ word: 'yes', translation: 'adv. 是； （表示刚想起某事）哦； （表示不相信某人所言）真的吗； （鼓励某人继续讲）往下说n. “是”，“行”； 同意，答应； 肯定的回答； 赞成票', testResults:'' }
+{ word: 'test', translation: 'n. 试验； 考验； 测验； 化验vt. 测验； 考查； 考验； 勘探vi. 受试验； 受测验； 受考验； 测得结果', testResults:'' }
