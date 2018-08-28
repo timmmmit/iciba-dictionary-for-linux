@@ -58,3 +58,66 @@
 { word: 'latern', translation: '释义 润滑环；', testResults:'' }
 { word: 'lantern', translation: 'n. 灯笼； 灯塔； 灯罩； 灯饰', testResults:'' }
 { word: 'scratch', translation: 'vt. 擦，刮； 擦痛，擦伤； 在…处搔痒； 抓破vi. 发出刮擦声； 擦红，擦伤； 搔痒； 抓，扒n. 擦，刮； 刮擦声； 搔痕； 乱写乱画adj. 打草稿用的，随便写用的； 碰巧的，侥幸的； 东拼西凑的； 平等比赛的', testResults:'' }
+{ word: 'elective', translation: 'adj. 选任的； 有选举权的； （课程）选修的； （可选择的）可选择的n. 选修课程；', testResults:'' }
+{ word: 'placard', translation: 'n. 招贴，布告； 标语牌； 海报；vt. 张贴布告于，在…上贴广告； 公布； 悬挂（标语等）；', testResults:'' }
+{ word: 'hint', translation: 'n. 线索，迹象； 提示，注意事项； 暗示； 微量vt. 暗示；vi. 暗示，提示；', testResults:'' }
+{ word: 'worn', translation: 'adj. 穿旧的，用旧的； 穿坏的，用坏的； 筋疲力尽的；v. wear的过分词；', testResults:'' }
+{ word: 'worm', translation: 'n. 虫，蠕虫； （昆虫的）幼虫； 寄生虫； 懦夫vt.&vi. 蠕动，曲折行进； 给（动物）驱肠虫； 使缓慢前进；', testResults:'' }
+{ word: 'assembled', translation: 'v. 集合，收集( assemble的过去式和过去分词 )； 装配，组合；', testResults:'' }
+{ word: 'insinuate', translation: 'v. 暗示； 巧妙或迂回地潜入； （使）缓慢进入； 慢慢伸入', testResults:'' }
+{ word: 'imparting', translation: 'v. 通知( impart的现在分词 )； 透露； 传授； 告知', testResults:'' }
+{ word: 'clarity', translation: 'n. 清楚，明晰； 透明； 明确； 清晰度', testResults:'' }
+{ word: 'compassion', translation: 'n. 怜悯，同情； 恻隐之心；', testResults:'' }
+{ word: 'passion', translation: 'n. 激情，热情； 热心，爱好； 热恋； 酷爱vt.&vi. [诗歌用语]表露强烈感情，显示巨大热情；', testResults:'' }
+{ word: 'nurture', translation: 'vt. 养育； 培育； 滋养； 培植n. 教养，培育； 营养物，食物； 环境因素；', testResults:'' }
+{ word: 'channel', translation: 'n. 频道，波道； 渠道； 途径； 海峡vt. 引导，开导； 形成河道；', testResults:'' }
+{ word: 'constructive', translation: 'adj. 建设的，建设性的； 积极的，有助益的； 构造上的； [法]推定的', testResults:'' }
+{ word: 'priest', translation: 'n. 神父，牧师； 司铎，司祭； 领导者； 神甫vt. 使成为神职人员；', testResults:'' }
+{ word: 'irrelevant', translation: 'adj. 不相干的； 不恰当； 缺乏时代性的，落后于潮流的； 牛头不对马嘴', testResults:'' }
+{ word: 'offspring', translation: 'n. 后代，子孙； 产物，结果； （动物的）崽； 幼苗', testResults:'' }
+{ word: 'scrambled', translation: 'v. 快速爬行( scramble的过去式和过去分词 )； 攀登； 争夺； （军事飞机）紧急起飞', testResults:'' }
+{ word: 'nod', translation: 'vi. 点头； 打瞌睡； 上下摆动； 变得粗心大意vt. 点头示意； 使弯曲，使屈服； 点头答应；n. 点头； 点头同意； 打瞌睡，打盹； 粗心大意', testResults:'' }
+{ word: 'melatonin', translation: 'n. 褪黑激素，N-乙酰-5-甲氧基色胺；', testResults:'' }
+{ word: 'hormone', translation: 'n. 荷尔蒙； 激素；', testResults:'' }
+{ word: 'epidemiological', translation: 'adj. 流行病学；', testResults:'' }
+{ word: 'evaluating', translation: 'v. 评价( evaluate的现在分词 )； 求…的值（或数）； 对…评价； [数学、逻辑学]求…的数值', testResults:'' }
+{ word: 'bacon', translation: 'n. 培根； 熏猪肉； 咸猪肉； 腊肉', testResults:'' }
+{ word: 'stimulant', translation: 'n. [药]兴奋剂； 刺激物； 酒精饮料；adj. 刺激的，激励的； 使人兴奋的；', testResults:'' }
+{ word: 'miscellaneous', translation: 'adj. 各种各样的； 五花八门的； 混杂的； 多方面的', testResults:'' }
+{ word: 'comprehension', translation: 'n. 理解，理解力； 包含的能力； [逻辑学]内涵；', testResults:'' }
+{ word: 'tag', translation: 'vt. 加标签于； 附加； 起诉； 紧跟vi. 跟在…后面； 随从；n. 标签； 附属物； 口头禅； 称呼', testResults:'' }
+{ word: 'toast', translation: 'n. 干杯； 烤面包； 接受敬酒的人； （在某领域）广受赞誉的人vt.&vi. 向…祝酒，为…干杯；vi. 烤火，取暖； 使暖和； 烘烤（面包片等）；', testResults:'' }
+{ word: 'status', translation: 'n. 地位； 情形，状态； 身份；', testResults:'' }
+{ word: 'manager', translation: 'n. 处理者，经理，管理人； 干事，理事； 〈美〉（政党等的）领袖； 策士，干才，干练的人', testResults:'' }
+{ word: 'manage', translation: 'vt. 使用； 完成（困难的事）； 经营； 明智地使用（金钱、时间、信息等）vt.&vi. 办理，设法对付；vi. 能解决（问题）； 应付（困难局面等）； 凑合着活下去； 支撑', testResults:'' }
+{ word: '电影院', translation: 'Cinema', testResults:'' }
+{ word: '共享', translation: 'enjoy together； share； sharing； communion partake ； ', testResults:'' }
+{ word: 'stuff', translation: 'n. 材料，原料，资料； 〈俚〉钱，现金； 填充物； 素材资料vt. 塞满； 填塞； 让吃饱；vi. 吃得过多；', testResults:'' }
+{ word: '共享自行车', translation: 'Shared bicycle', testResults:'' }
+{ word: 'available', translation: 'adj. 可获得的； 有空的； 可购得的； 能找到的', testResults:'' }
+{ word: 'properties', translation: 'n. 房地产(property的名词复数)； 财产； 所有权； 特性', testResults:'' }
+{ word: 'occupier', translation: 'n. 居住人； 占有者； 占用者；', testResults:'' }
+{ word: 'split', translation: 'vt. 分裂； 分开； <俚>（迅速）离开； 分担n. 划分； 分歧； 裂缝； 劈叉vi. <俚>走开； 揭发； 被撞碎； <美>[证券]（股票）增加发行adj. 裂开的，劈开的，分离的，分裂的；', testResults:'' }
+{ word: 'occupy', translation: 'vt. 占领； 使用，住在…； 使从事，使忙碌； 任职', testResults:'' }
+{ word: 'monday', translation: 'n. 星期一； 周一；', testResults:'' }
+{ word: 'provide', translation: 'vt.&vi. 提供，供给，供应；vt. 规定； 提供(+for)； 装备； 预备vi. 抚养，赡养(+for)； 做准备； 预约(for 或 against)；', testResults:'' }
+{ word: 'feature', translation: 'n. 特征，特点； 容貌，面貌； （期刊的）特辑； 故事片vt. 使有特色； 描写…的特征； 以…为号召物；vi. 起主要作用； 作重要角色；', testResults:'' }
+{ word: '功能', translation: 'function ； ', testResults:'' }
+{ word: 'reservation', translation: 'n. 保留； 预订，预约； 保留地，专用地；', testResults:'' }
+{ word: '预定', translation: 'fix in advance； predetermine； schedule； [计] reserve destine ； ', testResults:'' }
+{ word: 'reserve', translation: 'n. 储备； 保护区； 保留； 替补队员vt. 储备； 保留； 预约；vi. 预订；adj. 保留的； 预备的；', testResults:'' }
+{ word: '一次地', translation: 'Once', testResults:'' }
+{ word: 'once', translation: 'adv. 一次，一趟； 一倍； 曾经； 一旦conj. 一旦…就…； 一经；n. 一次，一回；', testResults:'' }
+{ word: 'recurring', translation: 'v. 再发生，复发( recur的现在分词 )； 再现；', testResults:'' }
+{ word: 'recurringly', translation: 'adv. recur（再现，重新出现）的变形；', testResults:'' }
+{ word: '周期地', translation: 'Periodically', testResults:'' }
+{ word: 'view', translation: 'n. 看法； 风景； 视域； [建筑学]视图vt. 看； 看待；', testResults:'' }
+{ word: '未完成的', translation: 'Unfinished', testResults:'' }
+{ word: '未开始的', translation: 'Not yet begun', testResults:'' }
+{ word: 'in addition', translation: '此外', testResults:'' }
+{ word: '管理员', translation: 'Administrators', testResults:'' }
+{ word: 'funnel', translation: 'n. 漏斗； （轮船，火车等的）烟囱； 漏斗状物； [矿]通风井vt.&vi. 把…灌进漏斗； 使成漏斗状； 成漏斗形； 使汇集', testResults:'' }
+{ word: 'redeemed', translation: 'v. 补偿( redeem的过去式和过去分词 )； 实践； 解救； 使…免受责难', testResults:'' }
+{ word: 'redeem', translation: 'vt. 赎回，挽回； 履行； 偿还； 兑现', testResults:'' }
+{ word: 'fission', translation: 'n. <物>（原子的）分裂，裂变； <生>分裂生殖；', testResults:'' }
+{ word: 'suspicious', translation: 'adj. 可疑的； 猜疑的，怀疑的； 多疑的，不信任的； 多心', testResults:'' }
